@@ -1,0 +1,29 @@
+.video-background {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1; /* Ensure the video stays in the background */
+}
+
+.video-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.6); /* Adjust the alpha value to control transparency */
+    z-index: 1;
+}
+
+.video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover; /* Ensures the video covers the entire area without distortion */
+    transform: translate(-50%, -50%);
+    z-index: 0;
+}
