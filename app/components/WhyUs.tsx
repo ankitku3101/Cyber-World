@@ -1,4 +1,4 @@
-export default function Features() {
+export function WhyUs() {
     return (
         <div className="bg-black">
             <section id="features" className="relative block px-6 py-10 md:py-20 md:px-10 bg-black">

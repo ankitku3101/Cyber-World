@@ -3,7 +3,7 @@
 import React from 'react';
 
 
-export default function() {
+export function Contact() {
   const scriptURL = 'https://script.google.com/macros/s/AKfycbzqUfRvupTVT_dLkUAyfwH3ci-tXEu5S9QnGzEIKE1zP861UtewwpulwSXmq7OoCLKm/exec';
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {

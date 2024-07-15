@@ -1,4 +1,4 @@
-export default function(){
+export function Blogs(){
     return(
         <div id="blog">
         <div className="max-w-7xl mx-auto mt-10 px-6 md:px-12 xl:px-6">

@@ -1,6 +1,4 @@
-
-
-export default function() {
+export function About() {
     return (
         <div id="about" className="max-w-7xl px-6 py-10 mx-auto sm:py-16 lg:px-8">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6 text-sky-500">

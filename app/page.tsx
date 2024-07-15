@@ -2,12 +2,12 @@
 import Link from "next/link";
 import { BgVideo } from "./components/BgVideo";
 import { Overlay } from "./components/Overlay";
-import Services from "./components/Services";
-import Contact from "./components/Contact";
-import Blogs from "./components/Blogs";
-import About from "./components/About";
-import WhyUs from "./components/WhyUs";
-import Testimonials from "./components/Testimonials";
+import { Services } from "./components/Services";
+import { Contact } from "./components/Contact";
+import { Blogs } from "./components/Blogs";
+import { About } from "./components/About";
+import { WhyUs } from "./components/WhyUs";
+import { Testimonials } from "./components/Testimonials";
 
 
 export default function Home() {

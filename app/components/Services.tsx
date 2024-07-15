@@ -36,7 +36,7 @@ export const services = [
     },
   ];
 
-export default function ()  {
+export function Services()  {
   let [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   return (
