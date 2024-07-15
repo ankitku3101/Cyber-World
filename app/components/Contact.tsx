@@ -2,7 +2,34 @@
 
 import React from 'react';
 
+
 export default function() {
+  const scriptURL = 'https://script.google.com/macros/s/AKfycbzqUfRvupTVT_dLkUAyfwH3ci-tXEu5S9QnGzEIKE1zP861UtewwpulwSXmq7OoCLKm/exec';
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const form = e.currentTarget;
+  
+    try {
+      const response = await fetch(scriptURL, {
+        method: 'POST',
+        body: new FormData(form),
+        redirect: 'manual' // Ensure manual redirection handling
+      });
+  
+      if (response.ok) {
+        console.log('Form submitted successfully!');
+      } else if (response.status === 302) {
+        console.log('Server redirected to:', response.headers.get('Location'));
+        // Handle redirection manually if needed
+      } else {
+        console.error('Error submitting form:', response.statusText);
+      }
+    } catch (error) {
+      console.error('Error submitting form:', error);
+    }
+  };
+
   return (
     <div>
       <div className="isolate bg-black px-6 py-10 sm:py-16 lg:px-8">
@@ -24,7 +51,13 @@ export default function() {
             Fill in the details and get in touch with us
           </p>
         </div>
-        <form action="#" method="POST" className="mx-auto mt-12 max-w-xl sm:mt-16">
+        <form
+              name='submit-to-google-sheet'
+              action="#"
+              method="POST"
+              className="mx-auto mt-12 max-w-xl sm:mt-16"
+              onSubmit={handleSubmit}
+            >
           <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
             <div>
               <label htmlFor="first-name" className="block text-sm font-semibold leading-6 text-white">

@@ -47,7 +47,7 @@ export default function ()  {
         {services.map((service, idx) => (
           <div
             key={service?.id}
-            className="relative group  block p-2 h-full w-full "
+            className="relative group block p-2 h-full w-full "
             onMouseEnter={() => setHoveredIndex(idx)}
             onMouseLeave={() => setHoveredIndex(null)}
           >
