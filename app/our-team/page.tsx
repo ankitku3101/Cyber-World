@@ -64,7 +64,7 @@ export default function TeamSection(){
   return (
     <div>
       <Appbar />
-      <div className="isolate py-7 bg-black">
+      <div className="py-7">
       <div
         className="absolute inset-x-0 bottom-[-10rem] -z-10 transform-gpu overflow-hidden blur-3xl sm:bottom-[-20rem]"
         aria-hidden="true"
