@@ -1,24 +1,24 @@
-import type { NextApiRequest, NextApiResponse } from 'next'
-import {google} from "googleapis";
+import { NextRequest, NextResponse } from 'next/server';
+import { google } from "googleapis";
 
 type SheetForm = {
-    name: string
-    email: string
-    phone: string
-    message: string
-}
+    firstname: string;
+    lastname: string;
+    company: string;
+    email: string;
+    phone: string;
+    lookingfor: string;
+    message: string;
+};
 
-export default async function handler(
-    req: NextApiRequest,
-    res: NextApiResponse
-) {
-    if (req.method !== 'POST') {
-        return res.status(405).send({ message: 'Only POST requests allowed' })
+export async function POST(req: NextRequest) {
+    if (req.method !== "POST") {
+        return NextResponse.json({ message: 'Only POST requests allowed' }, { status: 405 });
     }
 
-    const body = req.body as SheetForm
-
     try {
+        const body = await req.json() as SheetForm;
+
         const auth = new google.auth.GoogleAuth({
             credentials: {
                 client_email: process.env.GOOGLE_CLIENT_EMAIL,
@@ -29,7 +29,7 @@ export default async function handler(
                 'https://www.googleapis.com/auth/drive.file',
                 'https://www.googleapis.com/auth/spreadsheets'
             ]
-        })
+        });
 
         const sheets = google.sheets({
             auth,
@@ -38,21 +38,20 @@ export default async function handler(
 
         const response = await sheets.spreadsheets.values.append({
             spreadsheetId: process.env.GOOGLE_SHEET_ID,
-            range: 'A1:D1',
+            range: 'A1:G1',
             valueInputOption: 'USER_ENTERED',
             requestBody: {
                 values: [
-                    [body.name, body.email, body.phone, body.message]
+                    [body.firstname, body.lastname, body.company, body.email, body.phone, body.lookingfor, body.message]
                 ]
             }
         });
 
-        return res.status(201).json({
+        return NextResponse.json({
             data: response.data
-        })
-    }catch (e) {
-        const error = e as { code: number, message: string };
-        return res.status(error.code).send({message: error.message});
+        }, { status: 201 });
+    } catch (e) {
+        const error = e as { code: number; message: string };
+        return NextResponse.json({ error: error.message }, { status: error.code });
     }
-    
 }

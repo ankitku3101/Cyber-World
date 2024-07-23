@@ -8,12 +8,12 @@ import { Blogs } from "./components/Blogs";
 import { About } from "./components/About";
 import { WhyUs } from "./components/WhyUs";
 import { Testimonials } from "./components/Testimonials";
-import Forms from "./components/forms";
+
 
 
 export default function Home() {
   return (
-    <div>
+    <>
       <div className="relative w-full h-screen overflow-hidden">
         <Overlay />
         <BgVideo />
@@ -36,10 +36,7 @@ export default function Home() {
       <div id="" className="relative w-full h-screen ">
         <Testimonials />
       </div>
-      <div id="" className="relative w-full h-screen ">
-        <Forms />
-      </div>
-    </div>
+    </>
   );
 }
 
