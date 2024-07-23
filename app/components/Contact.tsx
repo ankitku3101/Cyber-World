@@ -24,7 +24,7 @@ export const Contact: NextPage = () => {
             message
         }
 
-        const rawResponse = await fetch('https://cyber-world-mu.vercel.app/api/submit', {
+        const rawResponse = await fetch('/api/submit', {
             method: "POST",
             headers: {
                 'Accept': 'application/json',
